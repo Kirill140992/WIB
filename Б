@@ -1,0 +1,6 @@
+SELECT EXTRACT(MONTH FROM date) AS month_35_max, sum (items.price) OVER (PARTITION BY EXTRACT(MONTH FROM date)) AS sum_35_max
+FROM purchases
+    JOIN items USING (itemid)
+    JOIN users USING (userid)
+        WHERE users.age >= 35
+        ORDER by sum_35_max DESC limit 1
