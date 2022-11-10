@@ -1,0 +1,31 @@
+CREATE TABLE users(
+    userid SERIAL PRIMARY KEY,
+    age INT NOT NULL
+    );
+  
+INSERT into users(age)
+VALUES
+    (18),(21),(34), (65),(27),(29),(31), (35),(63),(24),(89),(77);
+
+CREATE TABLE items(
+    itemid SERIAL PRIMARY KEY,
+    price INT NOT NULL
+    );
+  
+INSERT into items(price)
+VALUES
+    (128),(84),(634),(1476),(22890),(45000),(63000);
+
+CREATE TABLE purchases(
+   purchasesid SERIAL PRIMARY KEY,
+   userid INT REFERENCES users (userid),
+   itemid INT REFERENCES items (itemid),
+   date DATE
+   );
+  
+INSERT into purchases (userid, itemid, date)
+VALUES
+    (1,1,'2022-10-11'),(2,2,'2022-10-11'),(3,3,'2022-10-07'),(4,4,'2022-09-13'),
+    (5,5,'2022-08-03'),(6,6,'2022-07-15'),(7,2,'2022-07-03'),(8,3,'2022-07-01'),
+    (9,4,'2022-06-21'),(10,5,'2022-05-11'),(11,4,'2022-03-17'),(12,5,'2021-12-12'),
+    (6,6,'2021-12-08'),(7,7,'2021-11-03'),(8,1,'2021-11-03');
