@@ -1,0 +1,10 @@
+WITH table_A1 AS (
+   SELECT COUNT(items.itemid) As cnt, SUM(items.price) AS sum1
+  FROM purchases AS pur
+  JOIN items USING (itemid)
+  JOIN users USING (userid)
+      where users.age BETWEEN 18 AND 25
+  GROUP BY EXTRACT(MONTH FROM date)
+ )
+ 
+ SELECT Round(avg(sum1/cnt),2) AS avg_month from table_A1
