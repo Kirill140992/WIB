@@ -1,0 +1,6 @@
+SELECT items.itemid from purchases
+    JOIN items USING (itemid)
+    JOIN users USING(userid)
+        WHERE DATE > CURRENT_DATE - INTERVAL '1 year'
+        GROUP BY items.itemid                           
+            ORDER BY SUM(price) DESC LIMIT 1
